@@ -7144,7 +7144,7 @@ var app = (function () {
     		});
 
     	button.$on("click", function () {
-    		if (is_function(/*search*/ ctx[12](/*currentCountry*/ ctx[3], /*currentYear*/ ctx[4]))) /*search*/ ctx[12](/*currentCountry*/ ctx[3], /*currentYear*/ ctx[4]).apply(this, arguments);
+    		if (is_function(/*search*/ ctx[11](/*currentCountry*/ ctx[3], /*currentYear*/ ctx[4]))) /*search*/ ctx[11](/*currentCountry*/ ctx[3], /*currentYear*/ ctx[4]).apply(this, arguments);
     	});
 
     	const table = new Table({
@@ -7284,7 +7284,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*country*/ ctx[34];
     			option.value = option.__value;
-    			add_location(option, file$9, 198, 4, 4741);
+    			add_location(option, file$9, 198, 4, 4742);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -7338,7 +7338,7 @@ var app = (function () {
     			option.textContent = "-";
     			option.__value = "-";
     			option.value = option.__value;
-    			add_location(option, file$9, 200, 4, 4784);
+    			add_location(option, file$9, 200, 4, 4785);
     		},
     		m: function mount(target, anchor) {
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -7528,7 +7528,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*year*/ ctx[31];
     			option.value = option.__value;
-    			add_location(option, file$9, 208, 4, 5007);
+    			add_location(option, file$9, 208, 4, 5008);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -7582,7 +7582,7 @@ var app = (function () {
     			option.textContent = "-";
     			option.__value = "-";
     			option.value = option.__value;
-    			add_location(option, file$9, 210, 4, 5047);
+    			add_location(option, file$9, 210, 4, 5048);
     		},
     		m: function mount(target, anchor) {
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -7742,7 +7742,7 @@ var app = (function () {
     			i = element("i");
     			t = text(" Buscar");
     			attr_dev(i, "class", "fas fa-search");
-    			add_location(i, file$9, 214, 109, 5203);
+    			add_location(i, file$9, 214, 109, 5204);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, i, anchor);
@@ -7792,7 +7792,7 @@ var app = (function () {
     	return block;
     }
 
-    // (249:10) <Button outline color="danger" on:click="{deleteMarriage(marriage.name)}">
+    // (249:10) <Button outline color="danger" on:click="{deleteMarriage(marriage.country,marriage.year)}">
     function create_default_slot_12(ctx) {
     	let t;
 
@@ -7812,7 +7812,7 @@ var app = (function () {
     		block,
     		id: create_default_slot_12.name,
     		type: "slot",
-    		source: "(249:10) <Button outline color=\\\"danger\\\" on:click=\\\"{deleteMarriage(marriage.name)}\\\">",
+    		source: "(249:10) <Button outline color=\\\"danger\\\" on:click=\\\"{deleteMarriage(marriage.country,marriage.year)}\\\">",
     		ctx
     	});
 
@@ -7859,7 +7859,7 @@ var app = (function () {
     		});
 
     	button.$on("click", function () {
-    		if (is_function(/*deleteMarriage*/ ctx[10](/*marriage*/ ctx[28].name))) /*deleteMarriage*/ ctx[10](/*marriage*/ ctx[28].name).apply(this, arguments);
+    		if (is_function(/*deleteMarriage*/ ctx[9](/*marriage*/ ctx[28].country, /*marriage*/ ctx[28].year))) /*deleteMarriage*/ ctx[9](/*marriage*/ ctx[28].country, /*marriage*/ ctx[28].year).apply(this, arguments);
     	});
 
     	const block = {
@@ -7885,14 +7885,14 @@ var app = (function () {
     			create_component(button.$$.fragment);
     			t10 = space();
     			attr_dev(a, "href", a_href_value = "#/global-marriages/" + /*marriage*/ ctx[28].country + "/" + /*marriage*/ ctx[28].year);
-    			add_location(a, file$9, 242, 7, 6014);
-    			add_location(td0, file$9, 241, 6, 6002);
-    			add_location(td1, file$9, 244, 6, 6119);
-    			add_location(td2, file$9, 245, 6, 6150);
-    			add_location(td3, file$9, 246, 6, 6186);
-    			add_location(td4, file$9, 247, 6, 6218);
-    			add_location(td5, file$9, 248, 6, 6251);
-    			add_location(tr, file$9, 240, 5, 5991);
+    			add_location(a, file$9, 242, 7, 6015);
+    			add_location(td0, file$9, 241, 6, 6003);
+    			add_location(td1, file$9, 244, 6, 6120);
+    			add_location(td2, file$9, 245, 6, 6151);
+    			add_location(td3, file$9, 246, 6, 6187);
+    			add_location(td4, file$9, 247, 6, 6219);
+    			add_location(td5, file$9, 248, 6, 6252);
+    			add_location(tr, file$9, 240, 5, 5992);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -8035,7 +8035,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	button.$on("click", /*insertMarriage*/ ctx[9]);
+    	button.$on("click", /*insertMarriage*/ ctx[8]);
     	let each_value = /*marriages*/ ctx[7];
     	validate_each_argument(each_value);
     	let each_blocks = [];
@@ -8095,31 +8095,31 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$9, 220, 5, 5298);
-    			add_location(th1, file$9, 221, 5, 5317);
-    			add_location(th2, file$9, 222, 5, 5335);
-    			add_location(th3, file$9, 223, 5, 5373);
-    			add_location(th4, file$9, 224, 5, 5412);
-    			add_location(th5, file$9, 225, 5, 5451);
-    			add_location(tr0, file$9, 219, 4, 5288);
-    			add_location(thead, file$9, 218, 3, 5276);
-    			add_location(input0, file$9, 231, 9, 5520);
-    			add_location(td0, file$9, 231, 5, 5516);
+    			add_location(th0, file$9, 220, 5, 5299);
+    			add_location(th1, file$9, 221, 5, 5318);
+    			add_location(th2, file$9, 222, 5, 5336);
+    			add_location(th3, file$9, 223, 5, 5374);
+    			add_location(th4, file$9, 224, 5, 5413);
+    			add_location(th5, file$9, 225, 5, 5452);
+    			add_location(tr0, file$9, 219, 4, 5289);
+    			add_location(thead, file$9, 218, 3, 5277);
+    			add_location(input0, file$9, 231, 9, 5521);
+    			add_location(td0, file$9, 231, 5, 5517);
     			attr_dev(input1, "type", "number");
-    			add_location(input1, file$9, 232, 9, 5577);
-    			add_location(td1, file$9, 232, 5, 5573);
+    			add_location(input1, file$9, 232, 9, 5578);
+    			add_location(td1, file$9, 232, 5, 5574);
     			attr_dev(input2, "type", "number");
-    			add_location(input2, file$9, 233, 9, 5645);
-    			add_location(td2, file$9, 233, 5, 5641);
+    			add_location(input2, file$9, 233, 9, 5646);
+    			add_location(td2, file$9, 233, 5, 5642);
     			attr_dev(input3, "type", "number");
-    			add_location(input3, file$9, 234, 9, 5718);
-    			add_location(td3, file$9, 234, 5, 5714);
+    			add_location(input3, file$9, 234, 9, 5719);
+    			add_location(td3, file$9, 234, 5, 5715);
     			attr_dev(input4, "type", "number");
-    			add_location(input4, file$9, 235, 9, 5787);
-    			add_location(td4, file$9, 235, 5, 5783);
-    			add_location(td5, file$9, 236, 5, 5853);
-    			add_location(tr1, file$9, 230, 4, 5506);
-    			add_location(tbody, file$9, 229, 3, 5494);
+    			add_location(input4, file$9, 235, 9, 5788);
+    			add_location(td4, file$9, 235, 5, 5784);
+    			add_location(td5, file$9, 236, 5, 5854);
+    			add_location(tr1, file$9, 230, 4, 5507);
+    			add_location(tbody, file$9, 229, 3, 5495);
     		},
     		m: function mount(target, anchor, remount) {
     			insert_dev(target, thead, anchor);
@@ -8213,7 +8213,7 @@ var app = (function () {
 
     			button.$set(button_changes);
 
-    			if (dirty[0] & /*deleteMarriage, marriages*/ 1152) {
+    			if (dirty[0] & /*deleteMarriage, marriages*/ 640) {
     				each_value = /*marriages*/ ctx[7];
     				validate_each_argument(each_value);
     				let i;
@@ -8955,7 +8955,7 @@ var app = (function () {
     			i = element("i");
     			t = text(" Atrás");
     			attr_dev(i, "class", "fas fa-arrow-circle-left");
-    			add_location(i, file$9, 285, 53, 7462);
+    			add_location(i, file$9, 285, 53, 7480);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, i, anchor);
@@ -8989,7 +8989,7 @@ var app = (function () {
     			t = text(" Borrar todo");
     			attr_dev(i, "class", "fa fa-trash");
     			attr_dev(i, "aria-hidden", "true");
-    			add_location(i, file$9, 286, 66, 7585);
+    			add_location(i, file$9, 286, 66, 7603);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, i, anchor);
@@ -9065,7 +9065,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	button1.$on("click", /*deleteGlobalMarriages*/ ctx[11]);
+    	button1.$on("click", /*deleteGlobalMarriages*/ ctx[10]);
 
     	const block = {
     		c: function create() {
@@ -9077,7 +9077,7 @@ var app = (function () {
     			create_component(button0.$$.fragment);
     			t2 = space();
     			create_component(button1.$$.fragment);
-    			add_location(main, file$9, 188, 0, 4465);
+    			add_location(main, file$9, 188, 0, 4466);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -9179,7 +9179,7 @@ var app = (function () {
     		avg_m: ""
     	};
 
-    	//Usaremos estas variables para la pginacion y para la busqueda
+    	//Usaremos estas variables para la paginacion y para la busqueda
     	let countries = [];
 
     	let years = [];
@@ -9191,12 +9191,6 @@ var app = (function () {
     	let moreData = true;
     	onMount(getMarriages);
     	onMount(getCountriesYears);
-
-    	function addOffset(increment) {
-    		offset += increment;
-    		$$invalidate(5, currentPage += increment);
-    		getMarriages();
-    	}
 
     	//Funcion que devuelve array con los años y los paises existentes para poder hacer un select y usarlo para buscar
     	async function getCountriesYears() {
@@ -9307,6 +9301,12 @@ var app = (function () {
     		}
     	}
 
+    	function addOffset(increment) {
+    		offset += increment;
+    		$$invalidate(5, currentPage += increment);
+    		getMarriages();
+    	}
+
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -9377,13 +9377,13 @@ var app = (function () {
     		offset,
     		currentPage,
     		moreData,
-    		addOffset,
     		getCountriesYears,
     		getMarriages,
     		insertMarriage,
     		deleteMarriage,
     		deleteGlobalMarriages,
-    		search
+    		search,
+    		addOffset
     	});
 
     	$$self.$inject_state = $$props => {
@@ -9412,11 +9412,11 @@ var app = (function () {
     		currentPage,
     		moreData,
     		marriages,
-    		addOffset,
     		insertMarriage,
     		deleteMarriage,
     		deleteGlobalMarriages,
     		search,
+    		addOffset,
     		offset,
     		numberElementsPages,
     		getCountriesYears,

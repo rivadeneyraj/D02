@@ -26,7 +26,7 @@
 		avg_m:""
 	};
 
-//Usaremos estas variables para la pginacion y para la busqueda
+//Usaremos estas variables para la paginacion y para la busqueda
 	let countries = [];
 	let years = [];
 	let currentCountry = "-";
@@ -41,12 +41,6 @@
 	onMount(getCountriesYears);
 
 
-
-	function addOffset (increment) {
-		offset += increment;
-		currentPage += increment;
-		getMarriages();
-	}
 
 
 
@@ -182,6 +176,12 @@
 		
 	}
 
+	function addOffset (increment) {
+		offset += increment;
+		currentPage += increment;
+		getMarriages();
+	}
+
 
 
 </script>
@@ -246,7 +246,7 @@
 						<td>{marriage.marriages}</td>
 						<td>{marriage.avg_m}</td>
 						<td>{marriage.avg_wm}</td>
-						<td><Button outline color="danger" on:click="{deleteMarriage(marriage.name)}">Delete</Button></td>
+						<td><Button outline color="danger" on:click="{deleteMarriage(marriage.country,marriage.year)}">Delete</Button></td>
 					</tr>
 				{/each}
 			</tbody>
