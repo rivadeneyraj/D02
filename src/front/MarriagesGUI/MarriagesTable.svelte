@@ -69,33 +69,39 @@
 		}
 	}
 
-
+	
 
 
 	async function getMarriages() {
 
 		console.log("Fetching marriages...");
 		const res = await fetch("/api/v1/global-marriages?offset=" + numberElementsPages * offset + "&limit=" + numberElementsPages); 
-		
-		const next = await fetch("/api/v1/global-marriages?offset=" + numberElementsPages * (offset + 1) + "&limit=" + numberElementsPages); 
 
-		
-
-		if (res.ok && next.ok) {
+		if (res.ok) {
 			console.log("Ok:");
 			const json = await res.json();
-			const jsonNext = await next.json();
 			marriages = json;
-			
-			
-			if (jsonNext.length == 0) {  
-				moreData = false;
-			} else {
-				moreData = true;  //Vemos si quedan aun mas datos en la siguiente pagina
-			}
-
 			console.log("Received " + marriages.length + " marriages.");
-		} else {
+
+			if (marriages.length!=10){
+				moreData=false
+			} else{
+
+						const next = await fetch("/api/v1/global-marriages?offset=" + numberElementsPages * (offset+1) + "&limit=" + numberElementsPages); 
+						console.log("La variable NEXT tiene el estado: " + next.status)
+						const jsonNext = await next.json();
+						
+						
+						
+						if (jsonNext.length == 0 || next.status==404) {  
+							moreData = false;
+						} 
+						else {
+							moreData = true;  //Vemos si quedan aun mas datos en la siguiente pagina
+						}
+					}
+		} 
+		else {
 			console.log("ERROR!");
 		}
 	}

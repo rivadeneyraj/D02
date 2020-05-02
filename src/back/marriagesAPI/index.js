@@ -24,8 +24,10 @@ module.exports = function (app) {
         {"country": "Slovenia",   "year": 2018,   "marriages": 7256,   "avg_wm": 31.2,   "avg_m": 33.7 },
         {"country": "Montenegro",   "year": 2018,   "marriages": 3321,   "avg_wm": 28.3,   "avg_m": 31.9 },
 
-        {"country": "Iceland",   "year": 2011,   "marriages": 1458,   "avg_wm": 32.4,   "avg_m": 34.4 }
-
+        {"country": "Iceland",   "year": 2011,   "marriages": 1458,   "avg_wm": 32.4,   "avg_m": 34.4 },
+        {"country": "Invented",   "year": 2017,   "marriages": 3321,   "avg_wm": 28.3,   "avg_m": 31.9 },
+        {"country": "Invented2",   "year": 2019,   "marriages": 4324,   "avg_wm": 28.3,   "avg_m": 31.9 },
+        {"country": "Invented3",   "year": 2020,   "marriages": 3321,   "avg_wm": 28.3,   "avg_m": 31.9 }
 
 
     ];
