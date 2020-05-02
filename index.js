@@ -1,11 +1,14 @@
 const express = require("express");  //
 const bodyParser = require("body-parser"); //
-const back = require("./src/back");  
+//const marriagesAPI = require("src/back/marriagesAPI");  
+const path = require ("path");
+const marriagesAPI =require(path.join(__dirname,"./src/back/marriagesAPI"));
+
 var app = express();//
 
 app.use(bodyParser.json());   //
 
-back(app);   
+marriagesAPI(app);   
 
 var port = process.env.PORT || 9999; //
 

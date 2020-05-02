@@ -20,8 +20,8 @@
 	let marriages = [];
 	let newMarriage = {
 		country: "",
-		marriages: "",
 		year: parseInt("") ,
+		marriages: "",
 		avg_wm:"",
 		avg_m:""
 	};
@@ -76,17 +76,18 @@
 
 		console.log("Fetching marriages...");
 		const res = await fetch("/api/v1/global-marriages?offset=" + numberElementsPages * offset + "&limit=" + numberElementsPages); 
-
+		
 		const next = await fetch("/api/v1/global-marriages?offset=" + numberElementsPages * (offset + 1) + "&limit=" + numberElementsPages); 
 
+		
 
 		if (res.ok && next.ok) {
 			console.log("Ok:");
 			const json = await res.json();
 			const jsonNext = await next.json();
 			marriages = json;
-
-
+			
+			
 			if (jsonNext.length == 0) {  
 				moreData = false;
 			} else {
@@ -236,7 +237,6 @@
 					<td><input type="number" bind:value="{newMarriage.avg_wm}"></td>
 					<td> <Button outline  color="primary" on:click={insertMarriage}>Insertar</Button> </td>
 				</tr>
-
 				{#each marriages as marriage}
 					<tr>
 						<td>
