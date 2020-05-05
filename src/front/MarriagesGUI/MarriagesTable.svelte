@@ -42,6 +42,18 @@
 
 
 
+	async function ReloadTable() {
+		const res = await fetch("/api/v1/global-marriages/loadInitialData")
+
+		if (res.ok) {
+			const initialMarriages = await res.json();
+			console.log("Contados "+ initialMarriages.length +" datos de matrimonios")
+			getMarriages();
+		}else{
+			console.log("No se han cargado correctamente los datos inicales")
+		}
+	}
+
 
 
 //Funcion que devuelve array con los años y los paises existentes para poder hacer un select y usarlo para buscar
@@ -102,6 +114,7 @@
 					}
 		} 
 		else {
+			errorAlert("Error al intentar obtener todos los datos");
 			console.log("ERROR!");
 		}
 	}
@@ -125,7 +138,12 @@
 						"Content-Type": "application/json"
 					}
 				}).then(function (res) {
-					getMarriages();
+					if (res.ok){
+						getMarriages();
+					} else{
+						errorAlert("Error al intentar insertar el elemento")
+					}
+					
 				});
 			}
 	}
@@ -138,8 +156,14 @@
 		const res = await fetch("/api/v1/global-marriages/" + country+"/"+year, {
 			method: "DELETE"
 		}).then(function (res) {
+			if (res.ok){
 			getMarriages();
 			getCountriesYears();
+			} else if (res.status == 404) {
+				errorAlert("Se ha intentado borrar un elemento inexistente.");
+			} else {
+				errorAlert("Error al intentar borrar un elemento concreto");
+			}
 		});
 	}
 
@@ -149,8 +173,14 @@
 		const res = await fetch("/api/v1/global-marriages/", {
 			method: "DELETE"
 		}).then(function (res) {
-			getMarriages();
-			getCountriesYears();
+			if (res.ok){
+			const json =  res.json();
+			marriages = json;
+		} else{
+			errorAlert("Error al tratar de borrar todos los elementos")
+		}
+			//getMarriages();
+			//getCountriesYears();
 		});
 	}
 
@@ -178,6 +208,7 @@
 
 			console.log("Found " + marriages.length + " global marrriages stats.");
 		} else {
+			errorAlert("Error al realizar la busqueda solicitada")
 			console.log("ERROR!");
 		}
 		
@@ -189,12 +220,83 @@
 		getMarriages();
 	}
 
+	/* These functions are for the alerts */ 
+	function insertAlert() {
+		clearAlert();
+		var alert_element = document.getElementById("div_alert");
+		alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
+		alert_element.className = "alert alert-dismissible in alert-success ";
+		alert_element.innerHTML = "<strong>¡Dato insertado!</strong> El dato ha sido insertado correctamente";
+		
+		setTimeout(() => {
+			clearAlert();
+		}, 3000);
+	}
+	
+	function deleteAlert() {
+		clearAlert();
+		var alert_element = document.getElementById("div_alert");
+		alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
+		alert_element.className = "alert alert-dismissible in alert-danger ";
+		alert_element.innerHTML = "<strong>¡Dato borrado!</strong> El dato ha sido borrado correctamente";
+		
+		setTimeout(() => {
+			clearAlert();
+		}, 3000);
+	}
+
+	function deleteAllAlert() {
+		clearAlert();
+		var alert_element = document.getElementById("div_alert");
+		alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
+		alert_element.className = "alert alert-dismissible in alert-danger ";
+		alert_element.innerHTML = "<strong>¡Datos borrados!</strong> Todos los datos han sido borrados correctamente";
+		
+		setTimeout(() => {
+			clearAlert();
+		}, 3000);
+	}
+
+	
+	function ReloadTableAlert() {
+		clearAlert();
+		var alert_element = document.getElementById("div_alert");
+		alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
+		alert_element.className = "alert alert-dismissible in alert-danger ";
+		alert_element.innerHTML = "<strong>¡Tabla Recargada!</strong> Se han vuelto a los valores iniciales";
+		
+		setTimeout(() => {
+			clearAlert();
+		}, 3000);
+	}
+
+
+	function errorAlert(error) {
+		clearAlert();
+		var alert_element = document.getElementById("div_alert");
+		alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
+		alert_element.className = "alert alert-dismissible in alert-danger ";
+		alert_element.innerHTML = "<strong>¡ERROR!</strong> ¡Ha ocurrido un error! " + error;
+		
+		setTimeout(() => {
+			clearAlert();
+		}, 3000);
+	}
+
+	function clearAlert () {
+		var alert_element = document.getElementById("div_alert");
+		alert_element.style = "display: none; ";
+		alert_element.className = "alert alert-dismissible in";
+		alert_element.innerHTML = "";
+	}
+
 
 
 </script>
 
 <main>
-
+	<div role="alert" id="div_alert" style="display: none;">
+	</div>
 	{#await marriages}
 		Loading marriages...
 	{:then marriages}
@@ -221,6 +323,8 @@
 
 		<Button outline color="secondary" on:click="{search(currentCountry, currentYear)}" class="button-search" > <i class="fas fa-search"></i> Buscar </Button>
 		
+		<Button outline color="primary" on:click="{ReloadTable}"  on:click={ReloadTableAlert}> <i class="fas fa-search"></i> Recargar API </Button>
+
 
 		<Table bordered>
 			<thead>
@@ -241,7 +345,7 @@
 					<td><input type="number" bind:value="{newMarriage.marriages}"></td>
 					<td><input type="number" bind:value="{newMarriage.avg_m}"></td>
 					<td><input type="number" bind:value="{newMarriage.avg_wm}"></td>
-					<td> <Button outline  color="primary" on:click={insertMarriage}>Insertar</Button> </td>
+					<td> <Button outline  color="primary" on:click={insertMarriage}  on:click={insertAlert}> Insertar</Button> </td>
 				</tr>
 				{#each marriages as marriage}
 					<tr>
@@ -252,7 +356,7 @@
 						<td>{marriage.marriages}</td>
 						<td>{marriage.avg_m}</td>
 						<td>{marriage.avg_wm}</td>
-						<td><Button outline color="danger" on:click="{deleteMarriage(marriage.country,marriage.year)}">Delete</Button></td>
+						<td><Button outline color="danger" on:click="{deleteMarriage(marriage.country,marriage.year)}" on:click={deleteAlert}>  <i class="fa fa-trash" aria-hidden="true"></i> Borrar</Button></td>
 					</tr>
 				{/each}
 			</tbody>
@@ -290,6 +394,6 @@
 	</Pagination>
 
 	<Button outline color="secondary" on:click="{pop}"> <i class="fas fa-arrow-circle-left"></i> Atrás </Button>
-	<Button outline on:click={deleteGlobalMarriages} color="danger"> <i class="fa fa-trash" aria-hidden="true"></i> Borrar todo </Button>
+	<Button outline on:click={deleteGlobalMarriages}   on:click={deleteAllAlert} color="danger"> <i class="fa fa-trash" aria-hidden="true"></i> Borrar todo </Button>
 
 </main>

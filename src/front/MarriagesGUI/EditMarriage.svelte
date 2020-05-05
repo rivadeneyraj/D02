@@ -63,14 +63,55 @@
                 "Content-Type": "application/json"
             }
         }).then(function (res) {
-            getMarriage();
+            if (res.ok) {
+                 getMarriage();
+            } else if (res.status == 404) {
+                    errorAlert("Se ha intentado borrar un elemento inexistente.");
+                } else {
+                    errorAlert("");
+                }
         });
-
-
-
     }
+
+
+
+        function errorAlert(error) {
+		clearAlert();
+		var alert_element = document.getElementById("div_alert");
+		alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
+		alert_element.className = "alert alert-dismissible in alert-danger ";
+		alert_element.innerHTML = "<strong>¡ERROR!</strong> ¡Ha ocurrido un error! " + error;
+		
+		setTimeout(() => {
+			clearAlert();
+		}, 3000);
+    }
+    
+    function updateAlert() {
+		clearAlert();
+		var alert_element = document.getElementById("div_alert");
+		alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
+		alert_element.className = "alert alert-dismissible in alert-info ";
+		alert_element.innerHTML = "<strong>¡Dato actualizado!</strong> El dato ha sido actualizado correctamente";
+		
+		setTimeout(() => {
+			clearAlert();
+		}, 3000);
+    }
+    
+    function clearAlert () {
+		var alert_element = document.getElementById("div_alert");
+		alert_element.style = "display: none; ";
+		alert_element.className = "alert alert-dismissible in";
+		alert_element.innerHTML = "";
+	}
+
+    
 </script>
 <main>
+
+    <div role="alert" id="div_alert" style="display: none;">
+	</div>
     <h3>Edit Marriage <strong>{params.country}</strong></h3>
     {#await marriage}
         Loading marriages...
@@ -93,7 +134,7 @@
                     <td><input type="number" bind:value="{updatedMarriages}"></td>
                     <td><input type="number" bind:value="{updatedAvg_m}"></td>
                     <td><input type="number" bind:value="{updatedAvg_wm}"></td>
-                    <td> <Button outline  color="primary" on:click={updateMarriage}>Actualizar</Button> </td>
+                    <td> <Button outline  color="primary" on:click={updateMarriage} on:click={updateAlert}> <i class="fas fa-pencil-alt"> <i class="fas fa-pencil-alt"> </i> Actualizar</Button> </td>
                 </tr>
         </tbody>
         </Table>
