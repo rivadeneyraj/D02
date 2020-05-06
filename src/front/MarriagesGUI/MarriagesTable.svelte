@@ -51,6 +51,7 @@
 			getMarriages();
 		}else{
 			console.log("No se han cargado correctamente los datos inicales")
+			errorResponse(res)
 		}
 	}
 
@@ -77,7 +78,7 @@
 			console.log("Contados " + countries.length + "paises y " + years.length + "años distintos.");
 
 		} else {
-			console.log("ERROR!");
+			errorResponse(res)
 		}
 	}
 
@@ -114,8 +115,7 @@
 					}
 		} 
 		else {
-			errorAlert("Error al intentar obtener todos los datos");
-			console.log("ERROR!");
+			errorResponse(res)
 		}
 	}
 
@@ -141,7 +141,7 @@
 					if (res.ok){
 						getMarriages();
 					} else{
-						errorAlert("Error al intentar insertar el elemento")
+						errorResponse(res)
 					}
 					
 				});
@@ -161,9 +161,9 @@
 			getCountriesYears();
 			errorResponse(res)
 			} else if (res.status == 404) {
-				errorAlert("Se ha intentado borrar un elemento inexistente.");
+				errorResponse(res);
 			} else {
-				errorAlert("Error al intentar borrar un elemento concreto");
+				errorResponse(res);
 			}
 		});
 	}
@@ -178,7 +178,7 @@
 			const json =  res.json();
 			marriages = json;
 		} else{
-			errorAlert("Error al tratar de borrar todos los elementos")
+			errorResponse(res);
 		}
 			//getMarriages();
 			//getCountriesYears();
@@ -206,10 +206,10 @@
 			console.log("Ok:");
 			const json = await res.json();
 			marriages = json;			
-
 			console.log("Found " + marriages.length + " global marrriages stats.");
+			responseAlert("Busqueda realizada con exito")
 		} else {
-			errorAlert("Error al realizar la busqueda solicitada")
+			errorResponse(res)
 			console.log("ERROR!");
 		}
 		
@@ -222,18 +222,7 @@
 	}
 
 	/* These functions are for the alerts */ 
-	function insertAlert() {
-		clearAlert();
-		var alert_element = document.getElementById("div_alert");
-		alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
-		alert_element.className = "alert alert-dismissible in alert-success ";
-		alert_element.innerHTML = "<strong>¡Dato insertado!</strong> El dato ha sido insertado correctamente";
-		
-		setTimeout(() => {
-			clearAlert();
-		}, 3000);
-	}
-	
+
 	function deleteAlert() {
 		clearAlert();
 		var alert_element = document.getElementById("div_alert");
@@ -271,13 +260,12 @@
 		}, 3000);
 	}
 
-
-	function errorAlert(error) {
+	function responseAlert(error) {
 		clearAlert();
 		var alert_element = document.getElementById("div_alert");
 		alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
-		alert_element.className = "alert alert-dismissible in alert-danger ";
-		alert_element.innerHTML = "<strong>¡ERROR!</strong> ¡Ha ocurrido un error! " + error;
+		alert_element.className = "alert alert-dismissible in alert-success";
+		alert_element.innerHTML = "<strong>¡Exito!</strong> ¡La acción se ha llevado a cabo correctamente! " + error;
 		
 		setTimeout(() => {
 			clearAlert();
@@ -295,24 +283,30 @@ function errorResponse(res) {
 	var status = res.status
 	switch (status) {
 		case 400:
-			alert("Codigo de error: " + status + '\n'+ "Error de prueba");
+			alert("Codigo de error: " + status + '\n'+ "Los datos introduccidos no son validos");
 			break;
 		case 401:
-			alert("Codigo de error: " + status + '\n'+ "Error de prueba 1");
+			alert("Codigo de error: " + status + '\n'+ "No tiene permisos para realizar esta accion");
 			break;
 		case 404:
-			alert("Codigo de error: " + status + '\n'+ "Error de prueba 1");
+			alert("Codigo de error: " + status + '\n'+ "Página no encontrada");
 			break;
 		case 405:
-			alert("Codigo de error: " + status + '\n'+ "Error de prueba 1");
+			alert("Codigo de error: " + status + '\n'+ "Metodo no permitido");
 			break;
-		case 405:
-			alert("Codigo de error: " + status + '\n'+ "Error de prueba 1");
+		case 409:
+			alert("Codigo de error: " + status + '\n'+ "Conclifto con la operacion");
 			break;
 
 		default:
-			alert("Codigo de error: "+ status +'\n'+ "Error de desconocido")
-			break;
+			if (status!=400 && status!=401 && status!=404 && status!=405  && status!=409  && status!=200  && status!=2001) {
+				alert("Codigo de error: "+ status +'\n'+ "Error de desconocido por el sistema")
+				break;
+
+			}else{
+				break;
+			}
+			
 	}
 }
 
@@ -370,7 +364,7 @@ function errorResponse(res) {
 					<td><input type="number" bind:value="{newMarriage.marriages}"></td>
 					<td><input type="number" bind:value="{newMarriage.avg_m}"></td>
 					<td><input type="number" bind:value="{newMarriage.avg_wm}"></td>
-					<td> <Button outline  color="primary" on:click={insertMarriage}  on:click={insertAlert}> Insertar</Button> </td>
+					<td> <Button outline  color="primary" on:click={insertMarriage} > Insertar</Button> </td>
 				</tr>
 				{#each marriages as marriage}
 					<tr>
