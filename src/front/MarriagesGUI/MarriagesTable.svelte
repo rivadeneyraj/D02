@@ -159,6 +159,7 @@
 			if (res.ok){
 			getMarriages();
 			getCountriesYears();
+			errorResponse(res)
 			} else if (res.status == 404) {
 				errorAlert("Se ha intentado borrar un elemento inexistente.");
 			} else {
@@ -290,6 +291,30 @@
 		alert_element.innerHTML = "";
 	}
 
+function errorResponse(res) {
+	var status = res.status
+	switch (status) {
+		case 400:
+			alert("Codigo de error: " + status + '\n'+ "Error de prueba");
+			break;
+		case 401:
+			alert("Codigo de error: " + status + '\n'+ "Error de prueba 1");
+			break;
+		case 404:
+			alert("Codigo de error: " + status + '\n'+ "Error de prueba 1");
+			break;
+		case 405:
+			alert("Codigo de error: " + status + '\n'+ "Error de prueba 1");
+			break;
+		case 405:
+			alert("Codigo de error: " + status + '\n'+ "Error de prueba 1");
+			break;
+
+		default:
+			alert("Codigo de error: "+ status +'\n'+ "Error de desconocido")
+			break;
+	}
+}
 
 
 </script>
