@@ -65,39 +65,28 @@
         }).then(function (res) {
             if (res.ok) {
                  getMarriage();
+                 responseAlert("Los datos de " +params.country+ " en el año " +params.year+ " han sido actualizados correctamente")
             } else if (res.status == 404) {
                     errorAlert("Se ha intentado borrar un elemento inexistente.");
-                } else {
-                    errorAlert("");
-                }
+                } 
+                
         });
     }
 
 
 
-        function errorAlert(error) {
+    function responseAlert(msg) {
 		clearAlert();
 		var alert_element = document.getElementById("div_alert");
 		alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
-		alert_element.className = "alert alert-dismissible in alert-danger ";
-		alert_element.innerHTML = "<strong>¡ERROR!</strong> ¡Ha ocurrido un error! " + error;
+		alert_element.className = "alert alert-dismissible in alert-success";
+		alert_element.innerHTML = "<strong>¡Exito!</strong> " + msg;
 		
 		setTimeout(() => {
 			clearAlert();
 		}, 3000);
-    }
-    
-    function updateAlert() {
-		clearAlert();
-		var alert_element = document.getElementById("div_alert");
-		alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
-		alert_element.className = "alert alert-dismissible in alert-info ";
-		alert_element.innerHTML = "<strong>¡Dato actualizado!</strong> El dato ha sido actualizado correctamente";
-		
-		setTimeout(() => {
-			clearAlert();
-		}, 3000);
-    }
+	}
+
     
     function clearAlert () {
 		var alert_element = document.getElementById("div_alert");
@@ -107,6 +96,36 @@
 	}
 
     
+function errorResponse(res) {
+	var status = res.status
+	switch (status) {
+		case 400:
+			alert("Codigo de error: " + status + '\n'+ "Los datos introduccidos no son validos");
+			break;
+		case 401:
+			alert("Codigo de error: " + status + '\n'+ "No tiene permisos para realizar esta accion");
+			break;
+		case 404:
+			alert("Codigo de error: " + status + '\n'+ "Página no encontrada");
+			break;
+		case 405:
+			alert("Codigo de error: " + status + '\n'+ "Metodo no permitido");
+			break;
+		case 409:
+			alert("Codigo de error: " + status + '\n'+ "Conclifto con la operacion");
+			break;
+
+		default:
+			if (status!=400 && status!=401 && status!=404 && status!=405  && status!=409  && status!=200  && status!=2001) {
+				alert("Codigo de error: "+ status +'\n'+ "Error de desconocido por el sistema")
+				break;
+
+			}else{
+				break;
+			}
+			
+	}
+}
 </script>
 <main>
 
@@ -134,7 +153,7 @@
                     <td><input type="number" bind:value="{updatedMarriages}"></td>
                     <td><input type="number" bind:value="{updatedAvg_m}"></td>
                     <td><input type="number" bind:value="{updatedAvg_wm}"></td>
-                    <td> <Button outline  color="primary" on:click={updateMarriage} on:click={updateAlert}> <i class="fas fa-pencil-alt"> <i class="fas fa-pencil-alt"> </i> Actualizar</Button> </td>
+                    <td> <Button outline  color="primary" on:click={updateMarriage}> <i class="fas fa-pencil-alt"> <i class="fas fa-pencil-alt"> </i> Actualizar</Button> </td>
                 </tr>
         </tbody>
         </Table>

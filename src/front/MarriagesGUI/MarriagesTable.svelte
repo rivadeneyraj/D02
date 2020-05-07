@@ -49,6 +49,7 @@
 			const initialMarriages = await res.json();
 			console.log("Contados "+ initialMarriages.length +" datos de matrimonios")
 			getMarriages();
+			responseAlert("Se ha reiniciado la tabla correctamente con los valores iniciales")
 		}else{
 			console.log("No se han cargado correctamente los datos inicales")
 			errorResponse(res)
@@ -140,6 +141,7 @@
 				}).then(function (res) {
 					if (res.ok){
 						getMarriages();
+						responseAlert("Datos de " +newMarriage.country + " añadidos correctamente")
 					} else{
 						errorResponse(res)
 					}
@@ -157,12 +159,11 @@
 			method: "DELETE"
 		}).then(function (res) {
 			if (res.ok){
-			getMarriages();
-			getCountriesYears();
-			errorResponse(res)
-			} else if (res.status == 404) {
-				errorResponse(res);
-			} else {
+				getMarriages();
+				getCountriesYears();
+				responseAlert("El dato se ha borrado correctamente")
+			} 
+			else {
 				errorResponse(res);
 			}
 		});
@@ -177,6 +178,7 @@
 			if (res.ok){
 			const json =  res.json();
 			marriages = json;
+			responseAlert("Todos los datos se han borrado correctamente")
 		} else{
 			errorResponse(res);
 		}
@@ -207,7 +209,14 @@
 			const json = await res.json();
 			marriages = json;			
 			console.log("Found " + marriages.length + " global marrriages stats.");
-			responseAlert("Busqueda realizada con exito")
+		
+			if (country != "-" && year != "-") {
+				responseAlert("Busqueda de "+ country+ " en el año " + year +" realizada correctamente")  
+		} else if (country != "-" && year == "-") {
+				responseAlert("Busqueda de "+ country  +" realizada correctamente" )  
+		} else if (country == "-" && year != "-") {
+				responseAlert("Busqueda en el año "+ year+ " realizada correctamente")  
+		}
 		} else {
 			errorResponse(res)
 			console.log("ERROR!");
@@ -221,51 +230,14 @@
 		getMarriages();
 	}
 
-	/* These functions are for the alerts */ 
 
-	function deleteAlert() {
-		clearAlert();
-		var alert_element = document.getElementById("div_alert");
-		alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
-		alert_element.className = "alert alert-dismissible in alert-danger ";
-		alert_element.innerHTML = "<strong>¡Dato borrado!</strong> El dato ha sido borrado correctamente";
-		
-		setTimeout(() => {
-			clearAlert();
-		}, 3000);
-	}
 
-	function deleteAllAlert() {
-		clearAlert();
-		var alert_element = document.getElementById("div_alert");
-		alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
-		alert_element.className = "alert alert-dismissible in alert-danger ";
-		alert_element.innerHTML = "<strong>¡Datos borrados!</strong> Todos los datos han sido borrados correctamente";
-		
-		setTimeout(() => {
-			clearAlert();
-		}, 3000);
-	}
-
-	
-	function ReloadTableAlert() {
-		clearAlert();
-		var alert_element = document.getElementById("div_alert");
-		alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
-		alert_element.className = "alert alert-dismissible in alert-danger ";
-		alert_element.innerHTML = "<strong>¡Tabla Recargada!</strong> Se han vuelto a los valores iniciales";
-		
-		setTimeout(() => {
-			clearAlert();
-		}, 3000);
-	}
-
-	function responseAlert(error) {
+	function responseAlert(msg) {
 		clearAlert();
 		var alert_element = document.getElementById("div_alert");
 		alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
 		alert_element.className = "alert alert-dismissible in alert-success";
-		alert_element.innerHTML = "<strong>¡Exito!</strong> ¡La acción se ha llevado a cabo correctamente! " + error;
+		alert_element.innerHTML = "<strong>¡Exito!</strong> " + msg;
 		
 		setTimeout(() => {
 			clearAlert();
@@ -279,7 +251,7 @@
 		alert_element.innerHTML = "";
 	}
 
-function errorResponse(res) {
+function errorResponse(res, msg) {
 	var status = res.status
 	switch (status) {
 		case 400:
@@ -342,8 +314,6 @@ function errorResponse(res) {
 
 		<Button outline color="secondary" on:click="{search(currentCountry, currentYear)}" class="button-search" > <i class="fas fa-search"></i> Buscar </Button>
 		
-		<Button outline color="primary" on:click="{ReloadTable}"  on:click={ReloadTableAlert}> <i class="fas fa-search"></i> Recargar API </Button>
-
 
 		<Table bordered>
 			<thead>
@@ -359,11 +329,11 @@ function errorResponse(res) {
 			</thead>
 			<tbody>
 				<tr>
-					<td><input bind:value="{newMarriage.country}"></td>
-					<td><input type="number" bind:value="{newMarriage.year}"></td>
-					<td><input type="number" bind:value="{newMarriage.marriages}"></td>
-					<td><input type="number" bind:value="{newMarriage.avg_m}"></td>
-					<td><input type="number" bind:value="{newMarriage.avg_wm}"></td>
+					<td><input  placeholder="Ej. Spain" bind:value="{newMarriage.country}"></td>
+					<td><input type="number" placeholder="Ej. 2020" bind:value="{newMarriage.year}" ></td>
+					<td><input type="number" placeholder="Ej. 542121" bind:value="{newMarriage.marriages}"></td>
+					<td><input type="number" placeholder="Ej. 26" bind:value="{newMarriage.avg_m}"></td>
+					<td><input type="number" placeholder="Ej. 25" bind:value="{newMarriage.avg_wm}"></td>
 					<td> <Button outline  color="primary" on:click={insertMarriage} > Insertar</Button> </td>
 				</tr>
 				{#each marriages as marriage}
@@ -375,7 +345,7 @@ function errorResponse(res) {
 						<td>{marriage.marriages}</td>
 						<td>{marriage.avg_m}</td>
 						<td>{marriage.avg_wm}</td>
-						<td><Button outline color="danger" on:click="{deleteMarriage(marriage.country,marriage.year)}" on:click={deleteAlert}>  <i class="fa fa-trash" aria-hidden="true"></i> Borrar</Button></td>
+						<td><Button outline color="danger" on:click="{deleteMarriage(marriage.country,marriage.year)}">  <i class="fa fa-trash" aria-hidden="true"></i> Borrar</Button></td>
 					</tr>
 				{/each}
 			</tbody>
@@ -412,7 +382,9 @@ function errorResponse(res) {
 
 	</Pagination>
 
-	<Button outline color="secondary" on:click="{pop}"> <i class="fas fa-arrow-circle-left"></i> Atrás </Button>
-	<Button outline on:click={deleteGlobalMarriages}   on:click={deleteAllAlert} color="danger"> <i class="fa fa-trash" aria-hidden="true"></i> Borrar todo </Button>
+	<Button outline  color="secondary" on:click="{pop}"> <i class="fas fa-arrow-circle-left"></i> Atrás </Button>
+	<Button outline  on:click={deleteGlobalMarriages}   color="danger"> <i class="fa fa-trash" aria-hidden="true"></i> Borrar todo </Button>
+	<Button outline  color="primary" on:click="{ReloadTable}"> <i class="fas fa-search"></i> Recargar API </Button>
+
 
 </main>

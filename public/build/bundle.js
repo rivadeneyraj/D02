@@ -7109,12 +7109,11 @@ var app = (function () {
     	return block;
     }
 
-    // (321:1) {:then marriages}
+    // (293:1) {:then marriages}
     function create_then_block(ctx) {
     	let t0;
     	let t1;
     	let t2;
-    	let t3;
     	let current;
 
     	const formgroup0 = new FormGroup({
@@ -7133,7 +7132,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	const button0 = new Button({
+    	const button = new Button({
     			props: {
     				outline: true,
     				color: "secondary",
@@ -7144,27 +7143,14 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	button0.$on("click", function () {
+    	button.$on("click", function () {
     		if (is_function(/*search*/ ctx[12](/*currentCountry*/ ctx[3], /*currentYear*/ ctx[4]))) /*search*/ ctx[12](/*currentCountry*/ ctx[3], /*currentYear*/ ctx[4]).apply(this, arguments);
     	});
-
-    	const button1 = new Button({
-    			props: {
-    				outline: true,
-    				color: "primary",
-    				$$slots: { default: [create_default_slot_14] },
-    				$$scope: { ctx }
-    			},
-    			$$inline: true
-    		});
-
-    	button1.$on("click", /*ReloadTable*/ ctx[8]);
-    	button1.$on("click", ReloadTableAlert);
 
     	const table = new Table({
     			props: {
     				bordered: true,
-    				$$slots: { default: [create_default_slot_11] },
+    				$$slots: { default: [create_default_slot_12] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -7176,10 +7162,8 @@ var app = (function () {
     			t0 = space();
     			create_component(formgroup1.$$.fragment);
     			t1 = space();
-    			create_component(button0.$$.fragment);
+    			create_component(button.$$.fragment);
     			t2 = space();
-    			create_component(button1.$$.fragment);
-    			t3 = space();
     			create_component(table.$$.fragment);
     		},
     		m: function mount(target, anchor) {
@@ -7187,10 +7171,8 @@ var app = (function () {
     			insert_dev(target, t0, anchor);
     			mount_component(formgroup1, target, anchor);
     			insert_dev(target, t1, anchor);
-    			mount_component(button0, target, anchor);
+    			mount_component(button, target, anchor);
     			insert_dev(target, t2, anchor);
-    			mount_component(button1, target, anchor);
-    			insert_dev(target, t3, anchor);
     			mount_component(table, target, anchor);
     			current = true;
     		},
@@ -7210,20 +7192,13 @@ var app = (function () {
     			}
 
     			formgroup1.$set(formgroup1_changes);
-    			const button0_changes = {};
+    			const button_changes = {};
 
     			if (dirty[1] & /*$$scope*/ 128) {
-    				button0_changes.$$scope = { dirty, ctx };
+    				button_changes.$$scope = { dirty, ctx };
     			}
 
-    			button0.$set(button0_changes);
-    			const button1_changes = {};
-
-    			if (dirty[1] & /*$$scope*/ 128) {
-    				button1_changes.$$scope = { dirty, ctx };
-    			}
-
-    			button1.$set(button1_changes);
+    			button.$set(button_changes);
     			const table_changes = {};
 
     			if (dirty[0] & /*marriages, newMarriage*/ 129 | dirty[1] & /*$$scope*/ 128) {
@@ -7236,16 +7211,14 @@ var app = (function () {
     			if (current) return;
     			transition_in(formgroup0.$$.fragment, local);
     			transition_in(formgroup1.$$.fragment, local);
-    			transition_in(button0.$$.fragment, local);
-    			transition_in(button1.$$.fragment, local);
+    			transition_in(button.$$.fragment, local);
     			transition_in(table.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(formgroup0.$$.fragment, local);
     			transition_out(formgroup1.$$.fragment, local);
-    			transition_out(button0.$$.fragment, local);
-    			transition_out(button1.$$.fragment, local);
+    			transition_out(button.$$.fragment, local);
     			transition_out(table.$$.fragment, local);
     			current = false;
     		},
@@ -7254,10 +7227,8 @@ var app = (function () {
     			if (detaching) detach_dev(t0);
     			destroy_component(formgroup1, detaching);
     			if (detaching) detach_dev(t1);
-    			destroy_component(button0, detaching);
+    			destroy_component(button, detaching);
     			if (detaching) detach_dev(t2);
-    			destroy_component(button1, detaching);
-    			if (detaching) detach_dev(t3);
     			destroy_component(table, detaching);
     		}
     	};
@@ -7266,14 +7237,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(321:1) {:then marriages}",
+    		source: "(293:1) {:then marriages}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (324:3) <Label for="selectCountry">
+    // (296:3) <Label for="selectCountry">
     function create_default_slot_21(ctx) {
     	let t;
 
@@ -7293,14 +7264,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_21.name,
     		type: "slot",
-    		source: "(324:3) <Label for=\\\"selectCountry\\\">",
+    		source: "(296:3) <Label for=\\\"selectCountry\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (326:4) {#each countries as country}
+    // (298:4) {#each countries as country}
     function create_each_block_2(ctx) {
     	let option;
     	let t_value = /*country*/ ctx[35] + "";
@@ -7313,7 +7284,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*country*/ ctx[35];
     			option.value = option.__value;
-    			add_location(option, file$9, 326, 4, 8531);
+    			add_location(option, file$9, 298, 4, 7749);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -7337,14 +7308,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(326:4) {#each countries as country}",
+    		source: "(298:4) {#each countries as country}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (325:3) <Input type="select" name="selectCountry" id="selectCountry" bind:value="{currentCountry}">
+    // (297:3) <Input type="select" name="selectCountry" id="selectCountry" bind:value="{currentCountry}">
     function create_default_slot_20(ctx) {
     	let t0;
     	let option;
@@ -7367,7 +7338,7 @@ var app = (function () {
     			option.textContent = "-";
     			option.__value = "-";
     			option.value = option.__value;
-    			add_location(option, file$9, 328, 4, 8574);
+    			add_location(option, file$9, 300, 4, 7792);
     		},
     		m: function mount(target, anchor) {
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -7413,14 +7384,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_20.name,
     		type: "slot",
-    		source: "(325:3) <Input type=\\\"select\\\" name=\\\"selectCountry\\\" id=\\\"selectCountry\\\" bind:value=\\\"{currentCountry}\\\">",
+    		source: "(297:3) <Input type=\\\"select\\\" name=\\\"selectCountry\\\" id=\\\"selectCountry\\\" bind:value=\\\"{currentCountry}\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (323:2) <FormGroup>
+    // (295:2) <FormGroup>
     function create_default_slot_19(ctx) {
     	let t;
     	let updating_value;
@@ -7510,14 +7481,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_19.name,
     		type: "slot",
-    		source: "(323:2) <FormGroup>",
+    		source: "(295:2) <FormGroup>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (334:3) <Label for="selectYear">
+    // (306:3) <Label for="selectYear">
     function create_default_slot_18(ctx) {
     	let t;
 
@@ -7537,14 +7508,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_18.name,
     		type: "slot",
-    		source: "(334:3) <Label for=\\\"selectYear\\\">",
+    		source: "(306:3) <Label for=\\\"selectYear\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (336:4) {#each years as year}
+    // (308:4) {#each years as year}
     function create_each_block_1(ctx) {
     	let option;
     	let t_value = /*year*/ ctx[32] + "";
@@ -7557,7 +7528,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*year*/ ctx[32];
     			option.value = option.__value;
-    			add_location(option, file$9, 336, 4, 8797);
+    			add_location(option, file$9, 308, 4, 8015);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -7581,14 +7552,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(336:4) {#each years as year}",
+    		source: "(308:4) {#each years as year}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (335:3) <Input type="select"  name="selectYear" id="selectYear" bind:value="{currentYear}">
+    // (307:3) <Input type="select"  name="selectYear" id="selectYear" bind:value="{currentYear}">
     function create_default_slot_17(ctx) {
     	let t0;
     	let option;
@@ -7611,7 +7582,7 @@ var app = (function () {
     			option.textContent = "-";
     			option.__value = "-";
     			option.value = option.__value;
-    			add_location(option, file$9, 338, 4, 8837);
+    			add_location(option, file$9, 310, 4, 8055);
     		},
     		m: function mount(target, anchor) {
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -7657,14 +7628,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_17.name,
     		type: "slot",
-    		source: "(335:3) <Input type=\\\"select\\\"  name=\\\"selectYear\\\" id=\\\"selectYear\\\" bind:value=\\\"{currentYear}\\\">",
+    		source: "(307:3) <Input type=\\\"select\\\"  name=\\\"selectYear\\\" id=\\\"selectYear\\\" bind:value=\\\"{currentYear}\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (333:2) <FormGroup>
+    // (305:2) <FormGroup>
     function create_default_slot_16(ctx) {
     	let t;
     	let updating_value;
@@ -7754,14 +7725,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_16.name,
     		type: "slot",
-    		source: "(333:2) <FormGroup>",
+    		source: "(305:2) <FormGroup>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (343:2) <Button outline color="secondary" on:click="{search(currentCountry, currentYear)}" class="button-search" >
+    // (315:2) <Button outline color="secondary" on:click="{search(currentCountry, currentYear)}" class="button-search" >
     function create_default_slot_15(ctx) {
     	let i;
     	let t;
@@ -7771,7 +7742,7 @@ var app = (function () {
     			i = element("i");
     			t = text(" Buscar");
     			attr_dev(i, "class", "fas fa-search");
-    			add_location(i, file$9, 342, 109, 8993);
+    			add_location(i, file$9, 314, 109, 8211);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, i, anchor);
@@ -7787,48 +7758,15 @@ var app = (function () {
     		block,
     		id: create_default_slot_15.name,
     		type: "slot",
-    		source: "(343:2) <Button outline color=\\\"secondary\\\" on:click=\\\"{search(currentCountry, currentYear)}\\\" class=\\\"button-search\\\" >",
+    		source: "(315:2) <Button outline color=\\\"secondary\\\" on:click=\\\"{search(currentCountry, currentYear)}\\\" class=\\\"button-search\\\" >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (345:2) <Button outline color="primary" on:click="{ReloadTable}"  on:click={ReloadTableAlert}>
+    // (337:10) <Button outline  color="primary" on:click={insertMarriage} >
     function create_default_slot_14(ctx) {
-    	let i;
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			i = element("i");
-    			t = text(" Recargar API");
-    			attr_dev(i, "class", "fas fa-search");
-    			add_location(i, file$9, 344, 89, 9132);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, i, anchor);
-    			insert_dev(target, t, anchor);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(i);
-    			if (detaching) detach_dev(t);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_default_slot_14.name,
-    		type: "slot",
-    		source: "(345:2) <Button outline color=\\\"primary\\\" on:click=\\\"{ReloadTable}\\\"  on:click={ReloadTableAlert}>",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (367:10) <Button outline  color="primary" on:click={insertMarriage} >
-    function create_default_slot_13(ctx) {
     	let t;
 
     	const block = {
@@ -7845,17 +7783,17 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_13.name,
+    		id: create_default_slot_14.name,
     		type: "slot",
-    		source: "(367:10) <Button outline  color=\\\"primary\\\" on:click={insertMarriage} >",
+    		source: "(337:10) <Button outline  color=\\\"primary\\\" on:click={insertMarriage} >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (378:10) <Button outline color="danger" on:click="{deleteMarriage(marriage.country,marriage.year)}" on:click={deleteAlert}>
-    function create_default_slot_12(ctx) {
+    // (348:10) <Button outline color="danger" on:click="{deleteMarriage(marriage.country,marriage.year)}">
+    function create_default_slot_13(ctx) {
     	let i;
     	let t;
 
@@ -7865,7 +7803,7 @@ var app = (function () {
     			t = text(" Borrar");
     			attr_dev(i, "class", "fa fa-trash");
     			attr_dev(i, "aria-hidden", "true");
-    			add_location(i, file$9, 377, 126, 10305);
+    			add_location(i, file$9, 347, 103, 9358);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, i, anchor);
@@ -7879,16 +7817,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_12.name,
+    		id: create_default_slot_13.name,
     		type: "slot",
-    		source: "(378:10) <Button outline color=\\\"danger\\\" on:click=\\\"{deleteMarriage(marriage.country,marriage.year)}\\\" on:click={deleteAlert}>",
+    		source: "(348:10) <Button outline color=\\\"danger\\\" on:click=\\\"{deleteMarriage(marriage.country,marriage.year)}\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (369:4) {#each marriages as marriage}
+    // (339:4) {#each marriages as marriage}
     function create_each_block(ctx) {
     	let tr;
     	let td0;
@@ -7921,7 +7859,7 @@ var app = (function () {
     			props: {
     				outline: true,
     				color: "danger",
-    				$$slots: { default: [create_default_slot_12] },
+    				$$slots: { default: [create_default_slot_13] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -7930,8 +7868,6 @@ var app = (function () {
     	button.$on("click", function () {
     		if (is_function(/*deleteMarriage*/ ctx[10](/*marriage*/ ctx[29].country, /*marriage*/ ctx[29].year))) /*deleteMarriage*/ ctx[10](/*marriage*/ ctx[29].country, /*marriage*/ ctx[29].year).apply(this, arguments);
     	});
-
-    	button.$on("click", deleteAlert);
 
     	const block = {
     		c: function create() {
@@ -7956,14 +7892,14 @@ var app = (function () {
     			create_component(button.$$.fragment);
     			t10 = space();
     			attr_dev(a, "href", a_href_value = "#/global-marriages/" + /*marriage*/ ctx[29].country + "/" + /*marriage*/ ctx[29].year);
-    			add_location(a, file$9, 371, 7, 9948);
-    			add_location(td0, file$9, 370, 6, 9936);
-    			add_location(td1, file$9, 373, 6, 10053);
-    			add_location(td2, file$9, 374, 6, 10084);
-    			add_location(td3, file$9, 375, 6, 10120);
-    			add_location(td4, file$9, 376, 6, 10152);
-    			add_location(td5, file$9, 377, 6, 10185);
-    			add_location(tr, file$9, 369, 5, 9925);
+    			add_location(a, file$9, 341, 7, 9024);
+    			add_location(td0, file$9, 340, 6, 9012);
+    			add_location(td1, file$9, 343, 6, 9129);
+    			add_location(td2, file$9, 344, 6, 9160);
+    			add_location(td3, file$9, 345, 6, 9196);
+    			add_location(td4, file$9, 346, 6, 9228);
+    			add_location(td5, file$9, 347, 6, 9261);
+    			add_location(tr, file$9, 339, 5, 9001);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -8027,15 +7963,15 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(369:4) {#each marriages as marriage}",
+    		source: "(339:4) {#each marriages as marriage}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (348:2) <Table bordered>
-    function create_default_slot_11(ctx) {
+    // (318:2) <Table bordered>
+    function create_default_slot_12(ctx) {
     	let thead;
     	let tr0;
     	let th0;
@@ -8100,7 +8036,7 @@ var app = (function () {
     			props: {
     				outline: true,
     				color: "primary",
-    				$$slots: { default: [create_default_slot_13] },
+    				$$slots: { default: [create_default_slot_14] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -8166,31 +8102,31 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$9, 350, 5, 9231);
-    			add_location(th1, file$9, 351, 5, 9250);
-    			add_location(th2, file$9, 352, 5, 9268);
-    			add_location(th3, file$9, 353, 5, 9306);
-    			add_location(th4, file$9, 354, 5, 9345);
-    			add_location(th5, file$9, 355, 5, 9384);
-    			add_location(tr0, file$9, 349, 4, 9221);
-    			add_location(thead, file$9, 348, 3, 9209);
-    			add_location(input0, file$9, 361, 9, 9453);
-    			add_location(td0, file$9, 361, 5, 9449);
+    			add_location(th0, file$9, 320, 5, 8306);
+    			add_location(th1, file$9, 321, 5, 8325);
+    			add_location(th2, file$9, 322, 5, 8343);
+    			add_location(th3, file$9, 323, 5, 8381);
+    			add_location(th4, file$9, 324, 5, 8420);
+    			add_location(th5, file$9, 325, 5, 8459);
+    			add_location(tr0, file$9, 319, 4, 8296);
+    			add_location(thead, file$9, 318, 3, 8284);
+    			add_location(input0, file$9, 331, 9, 8528);
+    			add_location(td0, file$9, 331, 5, 8524);
     			attr_dev(input1, "type", "number");
-    			add_location(input1, file$9, 362, 9, 9510);
-    			add_location(td1, file$9, 362, 5, 9506);
+    			add_location(input1, file$9, 332, 9, 8585);
+    			add_location(td1, file$9, 332, 5, 8581);
     			attr_dev(input2, "type", "number");
-    			add_location(input2, file$9, 363, 9, 9578);
-    			add_location(td2, file$9, 363, 5, 9574);
+    			add_location(input2, file$9, 333, 9, 8654);
+    			add_location(td2, file$9, 333, 5, 8650);
     			attr_dev(input3, "type", "number");
-    			add_location(input3, file$9, 364, 9, 9651);
-    			add_location(td3, file$9, 364, 5, 9647);
+    			add_location(input3, file$9, 334, 9, 8727);
+    			add_location(td3, file$9, 334, 5, 8723);
     			attr_dev(input4, "type", "number");
-    			add_location(input4, file$9, 365, 9, 9720);
-    			add_location(td4, file$9, 365, 5, 9716);
-    			add_location(td5, file$9, 366, 5, 9786);
-    			add_location(tr1, file$9, 360, 4, 9439);
-    			add_location(tbody, file$9, 359, 3, 9427);
+    			add_location(input4, file$9, 335, 9, 8796);
+    			add_location(td4, file$9, 335, 5, 8792);
+    			add_location(td5, file$9, 336, 5, 8862);
+    			add_location(tr1, file$9, 330, 4, 8514);
+    			add_location(tbody, file$9, 329, 3, 8502);
     		},
     		m: function mount(target, anchor, remount) {
     			insert_dev(target, thead, anchor);
@@ -8344,16 +8280,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_11.name,
+    		id: create_default_slot_12.name,
     		type: "slot",
-    		source: "(348:2) <Table bordered>",
+    		source: "(318:2) <Table bordered>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (319:19)    Loading marriages...  {:then marriages}
+    // (291:19)    Loading marriages...  {:then marriages}
     function create_pending_block(ctx) {
     	let t;
 
@@ -8376,15 +8312,15 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(319:19)    Loading marriages...  {:then marriages}",
+    		source: "(291:19)    Loading marriages...  {:then marriages}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (388:2) <PaginationItem class="{currentPage === 1 ? 'disabled' : ''}">
-    function create_default_slot_10(ctx) {
+    // (358:2) <PaginationItem class="{currentPage === 1 ? 'disabled' : ''}">
+    function create_default_slot_11(ctx) {
     	let current;
 
     	const paginationlink = new PaginationLink({
@@ -8422,22 +8358,22 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_10.name,
+    		id: create_default_slot_11.name,
     		type: "slot",
-    		source: "(388:2) <PaginationItem class=\\\"{currentPage === 1 ? 'disabled' : ''}\\\">",
+    		source: "(358:2) <PaginationItem class=\\\"{currentPage === 1 ? 'disabled' : ''}\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (393:2) {#if currentPage != 1}
+    // (363:2) {#if currentPage != 1}
     function create_if_block_1$2(ctx) {
     	let current;
 
     	const paginationitem = new PaginationItem({
     			props: {
-    				$$slots: { default: [create_default_slot_8] },
+    				$$slots: { default: [create_default_slot_9] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -8478,15 +8414,15 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(393:2) {#if currentPage != 1}",
+    		source: "(363:2) {#if currentPage != 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (395:3) <PaginationLink href="#/globalMarriagesAPI" on:click="{() => addOffset(-1)}" >
-    function create_default_slot_9(ctx) {
+    // (365:3) <PaginationLink href="#/globalMarriagesAPI" on:click="{() => addOffset(-1)}" >
+    function create_default_slot_10(ctx) {
     	let t_value = /*currentPage*/ ctx[5] - 1 + "";
     	let t;
 
@@ -8507,23 +8443,23 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_9.name,
+    		id: create_default_slot_10.name,
     		type: "slot",
-    		source: "(395:3) <PaginationLink href=\\\"#/globalMarriagesAPI\\\" on:click=\\\"{() => addOffset(-1)}\\\" >",
+    		source: "(365:3) <PaginationLink href=\\\"#/globalMarriagesAPI\\\" on:click=\\\"{() => addOffset(-1)}\\\" >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (394:2) <PaginationItem>
-    function create_default_slot_8(ctx) {
+    // (364:2) <PaginationItem>
+    function create_default_slot_9(ctx) {
     	let current;
 
     	const paginationlink = new PaginationLink({
     			props: {
     				href: "#/globalMarriagesAPI",
-    				$$slots: { default: [create_default_slot_9] },
+    				$$slots: { default: [create_default_slot_10] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -8564,17 +8500,17 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_8.name,
+    		id: create_default_slot_9.name,
     		type: "slot",
-    		source: "(394:2) <PaginationItem>",
+    		source: "(364:2) <PaginationItem>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (399:3) <PaginationLink href="#/globalMarriagesAPI" >
-    function create_default_slot_7(ctx) {
+    // (369:3) <PaginationLink href="#/globalMarriagesAPI" >
+    function create_default_slot_8(ctx) {
     	let t;
 
     	const block = {
@@ -8594,23 +8530,23 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_7.name,
+    		id: create_default_slot_8.name,
     		type: "slot",
-    		source: "(399:3) <PaginationLink href=\\\"#/globalMarriagesAPI\\\" >",
+    		source: "(369:3) <PaginationLink href=\\\"#/globalMarriagesAPI\\\" >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (398:2) <PaginationItem active>
-    function create_default_slot_6(ctx) {
+    // (368:2) <PaginationItem active>
+    function create_default_slot_7(ctx) {
     	let current;
 
     	const paginationlink = new PaginationLink({
     			props: {
     				href: "#/globalMarriagesAPI",
-    				$$slots: { default: [create_default_slot_7] },
+    				$$slots: { default: [create_default_slot_8] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -8649,22 +8585,22 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_6.name,
+    		id: create_default_slot_7.name,
     		type: "slot",
-    		source: "(398:2) <PaginationItem active>",
+    		source: "(368:2) <PaginationItem active>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (403:2) {#if moreData}
+    // (373:2) {#if moreData}
     function create_if_block$6(ctx) {
     	let current;
 
     	const paginationitem = new PaginationItem({
     			props: {
-    				$$slots: { default: [create_default_slot_4] },
+    				$$slots: { default: [create_default_slot_5] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -8705,15 +8641,15 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(403:2) {#if moreData}",
+    		source: "(373:2) {#if moreData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (405:3) <PaginationLink href="#/globalMarriagesAPI" on:click="{() => addOffset(1)}">
-    function create_default_slot_5(ctx) {
+    // (375:3) <PaginationLink href="#/globalMarriagesAPI" on:click="{() => addOffset(1)}">
+    function create_default_slot_6(ctx) {
     	let t_value = /*currentPage*/ ctx[5] + 1 + "";
     	let t;
 
@@ -8734,23 +8670,23 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_5.name,
+    		id: create_default_slot_6.name,
     		type: "slot",
-    		source: "(405:3) <PaginationLink href=\\\"#/globalMarriagesAPI\\\" on:click=\\\"{() => addOffset(1)}\\\">",
+    		source: "(375:3) <PaginationLink href=\\\"#/globalMarriagesAPI\\\" on:click=\\\"{() => addOffset(1)}\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (404:2) <PaginationItem >
-    function create_default_slot_4(ctx) {
+    // (374:2) <PaginationItem >
+    function create_default_slot_5(ctx) {
     	let current;
 
     	const paginationlink = new PaginationLink({
     			props: {
     				href: "#/globalMarriagesAPI",
-    				$$slots: { default: [create_default_slot_5] },
+    				$$slots: { default: [create_default_slot_6] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -8791,17 +8727,17 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_4.name,
+    		id: create_default_slot_5.name,
     		type: "slot",
-    		source: "(404:2) <PaginationItem >",
+    		source: "(374:2) <PaginationItem >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (409:2) <PaginationItem class="{moreData ? '' : 'disabled'}">
-    function create_default_slot_3(ctx) {
+    // (379:2) <PaginationItem class="{moreData ? '' : 'disabled'}">
+    function create_default_slot_4(ctx) {
     	let current;
 
     	const paginationlink = new PaginationLink({
@@ -8836,17 +8772,17 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_3.name,
+    		id: create_default_slot_4.name,
     		type: "slot",
-    		source: "(409:2) <PaginationItem class=\\\"{moreData ? '' : 'disabled'}\\\">",
+    		source: "(379:2) <PaginationItem class=\\\"{moreData ? '' : 'disabled'}\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (385:1) <Pagination style="float:right;" ariaLabel="Cambiar de página">
-    function create_default_slot_2(ctx) {
+    // (355:1) <Pagination style="float:right;" ariaLabel="Cambiar de página">
+    function create_default_slot_3(ctx) {
     	let t0;
     	let t1;
     	let t2;
@@ -8856,7 +8792,7 @@ var app = (function () {
     	const paginationitem0 = new PaginationItem({
     			props: {
     				class: /*currentPage*/ ctx[5] === 1 ? "disabled" : "",
-    				$$slots: { default: [create_default_slot_10] },
+    				$$slots: { default: [create_default_slot_11] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -8867,7 +8803,7 @@ var app = (function () {
     	const paginationitem1 = new PaginationItem({
     			props: {
     				active: true,
-    				$$slots: { default: [create_default_slot_6] },
+    				$$slots: { default: [create_default_slot_7] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -8878,7 +8814,7 @@ var app = (function () {
     	const paginationitem2 = new PaginationItem({
     			props: {
     				class: /*moreData*/ ctx[6] ? "" : "disabled",
-    				$$slots: { default: [create_default_slot_3] },
+    				$$slots: { default: [create_default_slot_4] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -9007,17 +8943,17 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_2.name,
+    		id: create_default_slot_3.name,
     		type: "slot",
-    		source: "(385:1) <Pagination style=\\\"float:right;\\\" ariaLabel=\\\"Cambiar de página\\\">",
+    		source: "(355:1) <Pagination style=\\\"float:right;\\\" ariaLabel=\\\"Cambiar de página\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (415:1) <Button outline color="secondary" on:click="{pop}">
-    function create_default_slot_1(ctx) {
+    // (385:1) <Button outline  color="secondary" on:click="{pop}">
+    function create_default_slot_2(ctx) {
     	let i;
     	let t;
 
@@ -9026,7 +8962,41 @@ var app = (function () {
     			i = element("i");
     			t = text(" Atrás");
     			attr_dev(i, "class", "fas fa-arrow-circle-left");
-    			add_location(i, file$9, 414, 53, 11485);
+    			add_location(i, file$9, 384, 54, 10539);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, i, anchor);
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(i);
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot_2.name,
+    		type: "slot",
+    		source: "(385:1) <Button outline  color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (386:1) <Button outline  on:click={deleteGlobalMarriages}   color="danger">
+    function create_default_slot_1(ctx) {
+    	let i;
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			i = element("i");
+    			t = text(" Borrar todo");
+    			attr_dev(i, "class", "fa fa-trash");
+    			attr_dev(i, "aria-hidden", "true");
+    			add_location(i, file$9, 385, 69, 10665);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, i, anchor);
@@ -9042,14 +9012,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1.name,
     		type: "slot",
-    		source: "(415:1) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(386:1) <Button outline  on:click={deleteGlobalMarriages}   color=\\\"danger\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (416:1) <Button outline on:click={deleteGlobalMarriages}   on:click={deleteAllAlert} color="danger">
+    // (387:1) <Button outline  color="primary" on:click="{ReloadTable}">
     function create_default_slot(ctx) {
     	let i;
     	let t;
@@ -9057,10 +9027,9 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			i = element("i");
-    			t = text(" Borrar todo");
-    			attr_dev(i, "class", "fa fa-trash");
-    			attr_dev(i, "aria-hidden", "true");
-    			add_location(i, file$9, 415, 94, 11636);
+    			t = text(" Recargar API");
+    			attr_dev(i, "class", "fas fa-search");
+    			add_location(i, file$9, 386, 60, 10794);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, i, anchor);
@@ -9076,7 +9045,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(416:1) <Button outline on:click={deleteGlobalMarriages}   on:click={deleteAllAlert} color=\\\"danger\\\">",
+    		source: "(387:1) <Button outline  color=\\\"primary\\\" on:click=\\\"{ReloadTable}\\\">",
     		ctx
     	});
 
@@ -9091,6 +9060,7 @@ var app = (function () {
     	let t1;
     	let t2;
     	let t3;
+    	let t4;
     	let current;
 
     	let info = {
@@ -9110,7 +9080,7 @@ var app = (function () {
     			props: {
     				style: "float:right;",
     				ariaLabel: "Cambiar de página",
-    				$$slots: { default: [create_default_slot_2] },
+    				$$slots: { default: [create_default_slot_3] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -9120,7 +9090,7 @@ var app = (function () {
     			props: {
     				outline: true,
     				color: "secondary",
-    				$$slots: { default: [create_default_slot_1] },
+    				$$slots: { default: [create_default_slot_2] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -9132,14 +9102,25 @@ var app = (function () {
     			props: {
     				outline: true,
     				color: "danger",
-    				$$slots: { default: [create_default_slot] },
+    				$$slots: { default: [create_default_slot_1] },
     				$$scope: { ctx }
     			},
     			$$inline: true
     		});
 
     	button1.$on("click", /*deleteGlobalMarriages*/ ctx[11]);
-    	button1.$on("click", deleteAllAlert);
+
+    	const button2 = new Button({
+    			props: {
+    				outline: true,
+    				color: "primary",
+    				$$slots: { default: [create_default_slot] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	button2.$on("click", /*ReloadTable*/ ctx[8]);
 
     	const block = {
     		c: function create() {
@@ -9153,11 +9134,13 @@ var app = (function () {
     			create_component(button0.$$.fragment);
     			t3 = space();
     			create_component(button1.$$.fragment);
+    			t4 = space();
+    			create_component(button2.$$.fragment);
     			attr_dev(div, "role", "alert");
     			attr_dev(div, "id", "div_alert");
     			set_style(div, "display", "none");
-    			add_location(div, file$9, 316, 1, 8198);
-    			add_location(main, file$9, 315, 0, 8190);
+    			add_location(div, file$9, 288, 1, 7416);
+    			add_location(main, file$9, 287, 0, 7408);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -9175,6 +9158,8 @@ var app = (function () {
     			mount_component(button0, main, null);
     			append_dev(main, t3);
     			mount_component(button1, main, null);
+    			append_dev(main, t4);
+    			mount_component(button2, main, null);
     			current = true;
     		},
     		p: function update(new_ctx, dirty) {
@@ -9208,6 +9193,13 @@ var app = (function () {
     			}
 
     			button1.$set(button1_changes);
+    			const button2_changes = {};
+
+    			if (dirty[1] & /*$$scope*/ 128) {
+    				button2_changes.$$scope = { dirty, ctx };
+    			}
+
+    			button2.$set(button2_changes);
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -9215,6 +9207,7 @@ var app = (function () {
     			transition_in(pagination.$$.fragment, local);
     			transition_in(button0.$$.fragment, local);
     			transition_in(button1.$$.fragment, local);
+    			transition_in(button2.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
@@ -9226,6 +9219,7 @@ var app = (function () {
     			transition_out(pagination.$$.fragment, local);
     			transition_out(button0.$$.fragment, local);
     			transition_out(button1.$$.fragment, local);
+    			transition_out(button2.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -9236,6 +9230,7 @@ var app = (function () {
     			destroy_component(pagination);
     			destroy_component(button0);
     			destroy_component(button1);
+    			destroy_component(button2);
     		}
     	};
 
@@ -9250,57 +9245,12 @@ var app = (function () {
     	return block;
     }
 
-    function deleteAlert() {
-    	clearAlert();
-    	var alert_element = document.getElementById("div_alert");
-    	alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
-    	alert_element.className = "alert alert-dismissible in alert-danger ";
-    	alert_element.innerHTML = "<strong>¡Dato borrado!</strong> El dato ha sido borrado correctamente";
-
-    	setTimeout(
-    		() => {
-    			clearAlert();
-    		},
-    		3000
-    	);
-    }
-
-    function deleteAllAlert() {
-    	clearAlert();
-    	var alert_element = document.getElementById("div_alert");
-    	alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
-    	alert_element.className = "alert alert-dismissible in alert-danger ";
-    	alert_element.innerHTML = "<strong>¡Datos borrados!</strong> Todos los datos han sido borrados correctamente";
-
-    	setTimeout(
-    		() => {
-    			clearAlert();
-    		},
-    		3000
-    	);
-    }
-
-    function ReloadTableAlert() {
-    	clearAlert();
-    	var alert_element = document.getElementById("div_alert");
-    	alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
-    	alert_element.className = "alert alert-dismissible in alert-danger ";
-    	alert_element.innerHTML = "<strong>¡Tabla Recargada!</strong> Se han vuelto a los valores iniciales";
-
-    	setTimeout(
-    		() => {
-    			clearAlert();
-    		},
-    		3000
-    	);
-    }
-
-    function responseAlert(error) {
+    function responseAlert(msg) {
     	clearAlert();
     	var alert_element = document.getElementById("div_alert");
     	alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
     	alert_element.className = "alert alert-dismissible in alert-success";
-    	alert_element.innerHTML = "<strong>¡Exito!</strong> ¡La acción se ha llevado a cabo correctamente! " + error;
+    	alert_element.innerHTML = "<strong>¡Exito!</strong> " + msg;
 
     	setTimeout(
     		() => {
@@ -9317,7 +9267,7 @@ var app = (function () {
     	alert_element.innerHTML = "";
     }
 
-    function errorResponse(res) {
+    function errorResponse(res, msg) {
     	var status = res.status;
 
     	switch (status) {
@@ -9377,6 +9327,7 @@ var app = (function () {
     			const initialMarriages = await res.json();
     			console.log("Contados " + initialMarriages.length + " datos de matrimonios");
     			getMarriages();
+    			responseAlert("Se ha reiniciado la tabla correctamente con los valores iniciales");
     		} else {
     			console.log("No se han cargado correctamente los datos inicales");
     			errorResponse(res);
@@ -9448,6 +9399,7 @@ var app = (function () {
     			}).then(function (res) {
     				if (res.ok) {
     					getMarriages();
+    					responseAlert("Datos de " + newMarriage.country + " añadidos correctamente");
     				} else {
     					errorResponse(res);
     				}
@@ -9463,9 +9415,7 @@ var app = (function () {
     			if (res.ok) {
     				getMarriages();
     				getCountriesYears();
-    				errorResponse(res);
-    			} else if (res.status == 404) {
-    				errorResponse(res);
+    				responseAlert("El dato se ha borrado correctamente");
     			} else {
     				errorResponse(res);
     			}
@@ -9480,6 +9430,7 @@ var app = (function () {
     			if (res.ok) {
     				const json = res.json();
     				$$invalidate(7, marriages = json);
+    				responseAlert("Todos los datos se han borrado correctamente");
     			} else {
     				errorResponse(res);
     			}
@@ -9508,7 +9459,14 @@ var app = (function () {
     			const json = await res.json();
     			$$invalidate(7, marriages = json);
     			console.log("Found " + marriages.length + " global marrriages stats.");
-    			responseAlert("Busqueda realizada con exito");
+
+    			if (country != "-" && year != "-") {
+    				responseAlert("Busqueda de " + country + " en el año " + year + " realizada correctamente");
+    			} else if (country != "-" && year == "-") {
+    				responseAlert("Busqueda de " + country + " realizada correctamente");
+    			} else if (country == "-" && year != "-") {
+    				responseAlert("Busqueda en el año " + year + " realizada correctamente");
+    			}
     		} else {
     			errorResponse(res);
     			console.log("ERROR!");
@@ -9599,9 +9557,6 @@ var app = (function () {
     		deleteGlobalMarriages,
     		search,
     		addOffset,
-    		deleteAlert,
-    		deleteAllAlert,
-    		ReloadTableAlert,
     		responseAlert,
     		clearAlert,
     		errorResponse
@@ -9784,7 +9739,7 @@ var app = (function () {
     	return block;
     }
 
-    // (118:4) {:then marriage}
+    // (137:4) {:then marriage}
     function create_then_block$1(ctx) {
     	let current;
 
@@ -9832,14 +9787,14 @@ var app = (function () {
     		block,
     		id: create_then_block$1.name,
     		type: "then",
-    		source: "(118:4) {:then marriage}",
+    		source: "(137:4) {:then marriage}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (137:25) <Button outline  color="primary" on:click={updateMarriage} on:click={updateAlert}>
+    // (156:25) <Button outline  color="primary" on:click={updateMarriage}>
     function create_default_slot_2$1(ctx) {
     	let i1;
     	let i0;
@@ -9851,9 +9806,9 @@ var app = (function () {
     			i0 = element("i");
     			t = text(" Actualizar");
     			attr_dev(i0, "class", "fas fa-pencil-alt");
-    			add_location(i0, file$b, 136, 138, 4440);
+    			add_location(i0, file$b, 155, 115, 4916);
     			attr_dev(i1, "class", "fas fa-pencil-alt");
-    			add_location(i1, file$b, 136, 108, 4410);
+    			add_location(i1, file$b, 155, 85, 4886);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, i1, anchor);
@@ -9869,14 +9824,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$1.name,
     		type: "slot",
-    		source: "(137:25) <Button outline  color=\\\"primary\\\" on:click={updateMarriage} on:click={updateAlert}>",
+    		source: "(156:25) <Button outline  color=\\\"primary\\\" on:click={updateMarriage}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (119:8) <Table bordered>
+    // (138:8) <Table bordered>
     function create_default_slot_1$1(ctx) {
     	let thead;
     	let tr0;
@@ -9942,7 +9897,6 @@ var app = (function () {
     		});
 
     	button.$on("click", /*updateMarriage*/ ctx[8]);
-    	button.$on("click", updateAlert);
 
     	const block = {
     		c: function create() {
@@ -9985,28 +9939,28 @@ var app = (function () {
     			t18 = space();
     			td5 = element("td");
     			create_component(button.$$.fragment);
-    			add_location(th0, file$b, 121, 20, 3655);
-    			add_location(th1, file$b, 122, 20, 3690);
-    			add_location(th2, file$b, 123, 20, 3724);
-    			add_location(th3, file$b, 124, 20, 3766);
-    			add_location(th4, file$b, 125, 20, 3813);
-    			add_location(th5, file$b, 126, 20, 3860);
-    			add_location(tr0, file$b, 120, 16, 3629);
-    			add_location(thead, file$b, 119, 12, 3604);
-    			add_location(td0, file$b, 131, 20, 3986);
-    			add_location(td1, file$b, 132, 20, 4033);
+    			add_location(th0, file$b, 140, 20, 4154);
+    			add_location(th1, file$b, 141, 20, 4189);
+    			add_location(th2, file$b, 142, 20, 4223);
+    			add_location(th3, file$b, 143, 20, 4265);
+    			add_location(th4, file$b, 144, 20, 4312);
+    			add_location(th5, file$b, 145, 20, 4359);
+    			add_location(tr0, file$b, 139, 16, 4128);
+    			add_location(thead, file$b, 138, 12, 4103);
+    			add_location(td0, file$b, 150, 20, 4485);
+    			add_location(td1, file$b, 151, 20, 4532);
     			attr_dev(input0, "type", "number");
-    			add_location(input0, file$b, 133, 24, 4081);
-    			add_location(td2, file$b, 133, 20, 4077);
+    			add_location(input0, file$b, 152, 24, 4580);
+    			add_location(td2, file$b, 152, 20, 4576);
     			attr_dev(input1, "type", "number");
-    			add_location(input1, file$b, 134, 24, 4165);
-    			add_location(td3, file$b, 134, 20, 4161);
+    			add_location(input1, file$b, 153, 24, 4664);
+    			add_location(td3, file$b, 153, 20, 4660);
     			attr_dev(input2, "type", "number");
-    			add_location(input2, file$b, 135, 24, 4245);
-    			add_location(td4, file$b, 135, 20, 4241);
-    			add_location(td5, file$b, 136, 20, 4322);
-    			add_location(tr1, file$b, 130, 16, 3960);
-    			add_location(tbody, file$b, 129, 12, 3935);
+    			add_location(input2, file$b, 154, 24, 4744);
+    			add_location(td4, file$b, 154, 20, 4740);
+    			add_location(td5, file$b, 155, 20, 4821);
+    			add_location(tr1, file$b, 149, 16, 4459);
+    			add_location(tbody, file$b, 148, 12, 4434);
     		},
     		m: function mount(target, anchor, remount) {
     			insert_dev(target, thead, anchor);
@@ -10105,14 +10059,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$1.name,
     		type: "slot",
-    		source: "(119:8) <Table bordered>",
+    		source: "(138:8) <Table bordered>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (116:21)           Loading marriages...      {:then marriage}
+    // (135:21)           Loading marriages...      {:then marriage}
     function create_pending_block$1(ctx) {
     	let t;
 
@@ -10135,14 +10089,14 @@ var app = (function () {
     		block,
     		id: create_pending_block$1.name,
     		type: "pending",
-    		source: "(116:21)           Loading marriages...      {:then marriage}",
+    		source: "(135:21)           Loading marriages...      {:then marriage}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (142:4) {#if errorMsg}
+    // (161:4) {#if errorMsg}
     function create_if_block$7(ctx) {
     	let p;
     	let t0;
@@ -10154,7 +10108,7 @@ var app = (function () {
     			t0 = text("ERROR: ");
     			t1 = text(/*errorMsg*/ ctx[6]);
     			set_style(p, "color", "red");
-    			add_location(p, file$b, 142, 8, 4603);
+    			add_location(p, file$b, 161, 8, 5079);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -10173,14 +10127,14 @@ var app = (function () {
     		block,
     		id: create_if_block$7.name,
     		type: "if",
-    		source: "(142:4) {#if errorMsg}",
+    		source: "(161:4) {#if errorMsg}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (145:4) <Button outline color="secondary" on:click="{pop}">
+    // (164:4) <Button outline color="secondary" on:click="{pop}">
     function create_default_slot$1(ctx) {
     	let t;
 
@@ -10200,7 +10154,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$1.name,
     		type: "slot",
-    		source: "(145:4) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(164:4) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -10266,10 +10220,10 @@ var app = (function () {
     			attr_dev(div, "role", "alert");
     			attr_dev(div, "id", "div_alert");
     			set_style(div, "display", "none");
-    			add_location(div, file$b, 112, 4, 3362);
-    			add_location(strong, file$b, 114, 22, 3451);
-    			add_location(h3, file$b, 114, 4, 3433);
-    			add_location(main, file$b, 110, 0, 3348);
+    			add_location(div, file$b, 131, 4, 3861);
+    			add_location(strong, file$b, 133, 22, 3950);
+    			add_location(h3, file$b, 133, 4, 3932);
+    			add_location(main, file$b, 129, 0, 3847);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -10360,27 +10314,12 @@ var app = (function () {
     	return block;
     }
 
-    function errorAlert(error) {
+    function responseAlert$1(msg) {
     	clearAlert$1();
     	var alert_element = document.getElementById("div_alert");
     	alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
-    	alert_element.className = "alert alert-dismissible in alert-danger ";
-    	alert_element.innerHTML = "<strong>¡ERROR!</strong> ¡Ha ocurrido un error! " + error;
-
-    	setTimeout(
-    		() => {
-    			clearAlert$1();
-    		},
-    		3000
-    	);
-    }
-
-    function updateAlert() {
-    	clearAlert$1();
-    	var alert_element = document.getElementById("div_alert");
-    	alert_element.style = "position: fixed; top: 0px; top: 1%; width: 90%;";
-    	alert_element.className = "alert alert-dismissible in alert-info ";
-    	alert_element.innerHTML = "<strong>¡Dato actualizado!</strong> El dato ha sido actualizado correctamente";
+    	alert_element.className = "alert alert-dismissible in alert-success";
+    	alert_element.innerHTML = "<strong>¡Exito!</strong> " + msg;
 
     	setTimeout(
     		() => {
@@ -10395,6 +10334,35 @@ var app = (function () {
     	alert_element.style = "display: none; ";
     	alert_element.className = "alert alert-dismissible in";
     	alert_element.innerHTML = "";
+    }
+
+    function errorResponse$1(res) {
+    	var status = res.status;
+
+    	switch (status) {
+    		case 400:
+    			alert("Codigo de error: " + status + "\n" + "Los datos introduccidos no son validos");
+    			break;
+    		case 401:
+    			alert("Codigo de error: " + status + "\n" + "No tiene permisos para realizar esta accion");
+    			break;
+    		case 404:
+    			alert("Codigo de error: " + status + "\n" + "Página no encontrada");
+    			break;
+    		case 405:
+    			alert("Codigo de error: " + status + "\n" + "Metodo no permitido");
+    			break;
+    		case 409:
+    			alert("Codigo de error: " + status + "\n" + "Conclifto con la operacion");
+    			break;
+    		default:
+    			if (status != 400 && status != 401 && status != 404 && status != 405 && status != 409 && status != 200 && status != 2001) {
+    				alert("Codigo de error: " + status + "\n" + "Error de desconocido por el sistema");
+    				break;
+    			} else {
+    				break;
+    			}
+    	}
     }
 
     function instance$c($$self, $$props, $$invalidate) {
@@ -10444,10 +10412,9 @@ var app = (function () {
     		}).then(function (res) {
     			if (res.ok) {
     				getMarriage();
+    				responseAlert$1("Los datos de " + params.country + " en el año " + params.year + " han sido actualizados correctamente");
     			} else if (res.status == 404) {
     				errorAlert("Se ha intentado borrar un elemento inexistente.");
-    			} else {
-    				errorAlert("");
     			}
     		});
     	}
@@ -10496,9 +10463,9 @@ var app = (function () {
     		errorMsg,
     		getMarriage,
     		updateMarriage,
-    		errorAlert,
-    		updateAlert,
-    		clearAlert: clearAlert$1
+    		responseAlert: responseAlert$1,
+    		clearAlert: clearAlert$1,
+    		errorResponse: errorResponse$1
     	});
 
     	$$self.$inject_state = $$props => {
